@@ -11,25 +11,6 @@ class User {
 	}
 	
 	/*TEISED FUNKTSIOONID*/
-	function signUp ($email, $password) {
-		
-		$stmt = $this->connection->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
-	
-		echo $this->connection->error;
-		
-		$stmt->bind_param("ss", $email, $password);
-		
-		if($stmt->execute()) {
-			echo "salvestamine õnnestus";
-		} else {
-		 	echo "ERROR ".$stmt->error;
-		}
-		
-		$stmt->close();
-		$this->connection->close();
-		
-	}
-	
 	
 	function login ($email, $password) {
 		
@@ -85,5 +66,25 @@ class User {
 		
 	}
 	
+	function signUp ($email, $password) {
+		
+		$stmt = $this->connection->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
+	
+		echo $this->connection->error;
+		
+		$stmt->bind_param("ss", $email, $password);
+		
+		if($stmt->execute()) {
+			echo "salvestamine õnnestus";
+		} else {
+		 	echo "ERROR ".$stmt->error;
+		}
+		
+		$stmt->close();
+		
+		
+	}
+	
+
 } 
 ?>
